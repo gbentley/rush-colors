@@ -217,6 +217,9 @@ function View() {
     this.gridLineColor     = "#222222";
     this.primaryPieceColor = "#CC3333";
     this.pieceColor        = "#338899";
+	this.pieceColor3	   = "#f09c26";
+	this.pieceColorX       = "#1ca641";
+	this.pieceColorX3      = "#9612c9";
     this.pieceOutlineColor = "#222222";
     this.wallColor         = "#222222";
     this.wallBoltColor     = "#AAAAAA";
@@ -474,7 +477,13 @@ View.prototype.draw = function() {
         }
         if (i === 0) {
             p5.fill(this.primaryPieceColor);
-        } else {
+        } else if (piece.stride == 1 && piece.size == 2) {
+			p5.fill(this.pieceColorX);
+		} else if (piece.stride == 1 && piece.size == 3) {
+			p5.fill(this.pieceColorX3);
+		} else if (piece.stride != 1 && piece.size == 3) {
+			p5.fill(this.pieceColor3);
+		} else {
             p5.fill(this.pieceColor);
         }
         piece.draw(p5, size);
