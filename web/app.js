@@ -498,8 +498,14 @@ View.prototype.draw = function() {
         var steps = Math.round(offset);
         if (this.dragPiece === 0) {
             p5.fill(this.primaryPieceColor);
-        } else {
-            p5.fill(this.pieceColor);
+        } else if (piece.stride == 1 && piece.size == 2) {
+			p5.fill(this.pieceColorX);
+		} else if (piece.stride == 1 && piece.size == 3) {
+			p5.fill(this.pieceColorX3);
+		} else if (piece.stride != 1 && piece.size == 3) {
+			p5.fill(this.pieceColor3);
+		} else {
+			p5.fill(this.pieceColor);
         }
         p5.stroke(this.pieceOutlineColor);
         piece.draw(p5, size, offset);
