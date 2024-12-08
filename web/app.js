@@ -428,8 +428,18 @@ View.prototype.draw = function() {
     // board
     p5.fill(this.boardColor);
     if (board.isSolved()) {
+		var colors = [this.pieceColor,this.pieceColor3,this.pieceColorX,this.pieceColorX3];
         if (Date.now() % 500 < 250) {
-            p5.fill("#FFFFFF");
+            p5.fill(this.backgroundColor);
+        }
+		if (Date.now() % 1000 < 250) {
+			p5.background(colors[0]);
+        } else if (Date.now() % 1000 > 250 && Date.now() % 1000 < 500) {
+			p5.background(colors[1]);
+        } else if (Date.now() % 1000 < 750 && Date.now() % 1000 > 500) {
+			p5.background(colors[2]);
+        } else if (Date.now() % 1000 < 1000 && Date.now() % 1000 > 750) {
+			p5.background(colors[3]);
         }
     }
     p5.stroke(this.gridLineColor);
